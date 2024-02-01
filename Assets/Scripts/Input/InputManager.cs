@@ -11,11 +11,14 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        playerInput = new PlayerInput();
+        driving = playerInput.Driving;
+
+        playerMovement = GetComponent<PlayerMovement>();        
     }
     private void FixedUpdate()
     {
-        
+        playerMovement.ProcessMove(driving.Movement.ReadValue<float>()); 
     }
     private void OnEnable()
     {
